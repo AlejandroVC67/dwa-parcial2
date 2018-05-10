@@ -1,0 +1,34 @@
+<div class="comic">
+  <div class="comic__filter">
+      <div class="comic__filter__container">
+        <input class="comic__filter__container-input" [(ngModel)]="searchText" placeholder="Filter by comic name"/>
+        <div class="comic__filter__container-logo"></div>
+      </div>
+  </div>
+
+  <div class="comic__card">
+    <ul class="comic__card__list">
+      <li class="comic__card__list__element" *ngFor="let comic of data | filter:searchText;  let i = index;">
+        <div class="comic__card__list__element-container">
+          <img class="comic__card__list__element-image" src="{{comic.thumbnail.path + '.jpg'}}" alt="comic image" />
+          <div class="comic__card__list__element-information">
+            <p class="comic__card__list__element-information-text"><b>Title: {{comic.title}}</b></p>
+            <p class="comic__card__list__element-information-text"><b>Date: {{date[i]}}</b></p>
+            <div class="comic__card__list__element-information__rating">
+              <p class="comic__card__list__element-information__input"><b>Rating: {{ comicsRating[i] }}</b></p>
+              <div class="comic__card__list__element-information__rating-arrows">
+                <button class="comic__card__list__element-information-button" (click)="rateComicUp(i)">
+                  <div class="comic__card__list__element-information__arrow" ></div>
+                </button>
+                <button class="comic__card__list__element-information-button" (click)="rateComicDown(i)">
+                  <div class="comic__card__list__element-information__arrow"></div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
